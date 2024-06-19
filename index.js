@@ -54,12 +54,29 @@ function findBook() {
         let status = document.createElement("span");
         status.innerHTML = `Status: <b>${myLibrary[i].status === 'read' ? "Read" : "Unread"}</b>`;
 
+        let removeBtn = document.createElement("button");
+        removeBtn.innerText = "Delete"
+
         book.appendChild(name);
         book.appendChild(author);
         book.appendChild(pages);
         book.appendChild(status);
+        book.appendChild(removeBtn)
         bookSection.appendChild(book);
         bookSection.style.opacity = 1;
+        removeBtn.setAttribute("id", "remove-book");
+        removeBtn.style.display = "flex"
+        removeBtn.style.alignItems = "center"
+        removeBtn.style.fontSize = "18px"
+        removeBtn.addEventListener("click", () => {
+            console.log(`Received request for removing title:  "${myLibrary[i].title}" `);
+            const index = myLibrary.indexOf(myLibrary[i])
+            if (index !== -1) {
+                myLibrary.splice(index, 1);
+            }
+            bookSection.removeChild(book)
+        })
+
         console.log(`${myLibrary[i].title} was written by ${myLibrary[i].author} and it has around ${myLibrary[i].numOfPages} pages!`);
     }
 }
