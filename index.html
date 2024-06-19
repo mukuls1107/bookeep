@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <style>
+        #library, #add-book {
+            font-size: 32px;
+        }
+        .book-section {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0;
+        }
+        .book {
+            box-sizing: border-box;
+            height: auto;
+            width: 200px;
+            border: 1px solid black;
+            margin: 1rem;
+            padding: 0.5rem;
+            background-color: #f9f9f9;
+        }
+        span {
+            display: block;
+            margin-top: 0.5rem;
+            text-align: center;
+            font-size: 24px;
+        }
+        dialog::backdrop {
+            opacity: 1;
+        }
+        dialog {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+        }
+        dialog > form {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .lib{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Buttons  -->
+    <div class="lib">
+        <button id="library">See Library</button>
+        <button id="add-book">Add Book</button>
+    </div>
+
+    <!-- Dialog here -->
+    <dialog>
+        <h2>Please Fill All the Information Correctly below:</h2>
+        <form id="book-form">
+            <label for="name">Enter the Title of the Book: </label>
+            <input type="text" name="name" id="name" placeholder="title here..." required />
+            <label for="author">Enter the Author of the Book: </label>
+            <input type="text" name="author" id="author" placeholder="author name here..." required />
+            <label for="page">Enter the Number of Pages: </label>
+            <input type="number" name="page" id="page" placeholder="number of pages here..." required />
+            <label>Status of the Book: </label>
+            <div>
+                <input type="radio" name="status" value="read" id="read" required />
+                <label for="read">Read</label>
+                <input type="radio" name="status" value="unread" id="unread" required />
+                <label for="unread">Unread</label>
+            </div>
+            <button type="submit" class="close-dialog">Add Book</button>
+            <button type="button" class="close-dialog">Close</button>
+        </form>
+    </dialog>
+
+    <!-- Books added below -->
+    <div class="book-section"></div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
